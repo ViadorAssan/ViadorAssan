@@ -1,1 +1,36 @@
+import matplotlib.pyplot as plt
+import rasterio
+from rasterio.plot import show
 
+def visualizar_imagens_raster(raster_1_path, raster_2_path):
+    """
+    Visualiza duas imagens raster de satélite lado a lado.
+    
+    :param raster_1_path: Caminho para o arquivo raster da primeira época.
+    :param raster_2_path: Caminho para o arquivo raster da segunda época.
+    """
+    try:
+        # Abrir os arquivos raster
+        with rasterio.open(raster_1_path) as src1, rasterio.open(raster_2_path) as src2:
+            fig, axes = plt.subplots(1, 2, figsize=(15, 8))
+            
+            # Exibir a primeira imagem raster
+            axes[0].set_title("Imagem da Primeira Época")
+            show(src1, ax=axes[0])
+            
+            # Exibir a segunda imagem raster
+            axes[1].set_title("Imagem da Segunda Época")
+            show(src2, ax=axes[1])
+            
+            plt.tight_layout()
+            plt.show()
+    except Exception as e:
+        print(f"Ocorreu um erro ao visualizar as imagens raster: {e}")
+
+if __name__ == "__main__":
+    # Caminhos para os arquivos raster das duas épocas
+    raster_1_path = "namaacha_epoca1.tif"  # Substitua pelo caminho do arquivo GeoTIFF da primeira época
+    raster_2_path = "namaacha_epoca2.tif"  # Substitua pelo caminho do arquivo GeoTIFF da segunda época
+
+    # Exibir as imagens
+    visualizar_imagens_raster(raster_1_path, raster_2_path)
