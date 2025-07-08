@@ -189,8 +189,8 @@ const Footer = ({ contactInfo }) => (
             {contactInfo?.phone || "86 884 4903"}
           </p>
           <p className="flex items-center mb-2">
-            <span className="mr-2">✉️</span>
-            {contactInfo?.email || "viadorassan@gmail.com"}
+            <span className="mr-2">✉️</span>           
+             {contactInfo?.email || "assaneviador14@gmail.com"}
           </p>
           <p className="flex items-center">
             <span className="mr-2">📍</span>
